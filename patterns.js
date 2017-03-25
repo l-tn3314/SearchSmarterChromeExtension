@@ -107,10 +107,6 @@ function definePatternSuggestions(num, words) {
 }
 
 
-chrome.runtime.sendMessage({
-  action: "optimize"
-});
-
 // listen for messages from the popup
 chrome.runtime.onMessage.addListener(function (request, sender, response) {
   if (request.action == "dom") {

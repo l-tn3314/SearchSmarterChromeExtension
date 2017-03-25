@@ -19,7 +19,7 @@
   "content_scripts": [
     {
       "matches": ["https://www.google.com/*", "https://www.google.com/search*", "https://www.google.com/#q*, https://www.google.com/webhp*"],
-      "js":["google_cs.js", "jquery-3.2.0.min.js"]
+      "js": ["jquery-3.2.0.min.js", "google_cs.js", "patterns.js"]
     }
   ],
 

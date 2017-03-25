@@ -1,55 +1,65 @@
 <!doctype html>
 
 <html>
-
 <head>
   <!-- js source -->
-  <script src="popup.js"></script>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="jquery-3.2.0.min.js">
+  </script>
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet"
   href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js">
-  </script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js">
+  <script src="bootstrap.min.js">
   </script>
 </head>
 
-<body style="height:340px; width:550px; background-color: #ADEAF7;">
-  <div class="row">
-    <div class="col-xs">
-      <center>
-        <div class="header-font">
-          Optimized Search Suggestion</div>
-          <div class="rules-font">
-            wow such an optimized search !!
-          </div>
-          <div class="header-font">General Ways to Improve Your Searches<br>
-          </div>
-          <div class="rules-font">
-            Only type important words <br>
-          </div>
-          <div class="examples-font">please tell me how to cook pasta -> cook pasta<br>
-          </div>
-          <div class="rules-font">
-            Put a “-” infront of words you don’t want to include<br>
-          </div>
-          <div class="examples-font">-william sherlock -scott holmes -> sherlock holmes<br>
-          </div>
-          <div class="rules-font">
-            Put any words your search must include in quotes<br>
-          </div>
-          <div class="examples-font">black labrador "average weight"<br>
-          </div>
-          <div class="rules-font">
-            Use an "@" to directly search social media<br>
-          </div>
-          <div class="examples-font">womens march social media -> @womensmarch<br>
-          </div>
+<body style="background-color: #ADEAF7;">
+  <div id="initSearchButton">
+    <center>
+      <input id="initialSearch" type="submit" value="Are you unhappy with your search?">
+    </center>
+  </div>
+  <div id="optResults">
+    <div class="pre-scrollable">
+      <div style="width: 300px;">
+        <div class="row">
+          <div class="col-xs">
+            <center>
+              <div class="header-font">
+                Optimized Search Suggestion
+              </div>
+              <div class="rules-font" id="suggestions">
+                this better option is better
+              </div>
+              <div class="header-font">General Ways to Improve Your Searches<br>
+              </div>
+              <div class="rules-font">
+                Only type important words <br>
+              </div>
+              <div class="examples-font">please tell me how to cook pasta -> cook pasta<br>
+              </div>
+              <div class="rules-font">
+                Put a “-” infront of words you don’t want to include<br>
+              </div>
+              <div class="examples-font">-william sherlock -scott holmes -> sherlock holmes<br>
+              </div>
+              <div class="rules-font">
+                Put any words your search must include in quotes<br>
+              </div>
+              <div class="examples-font">black labrador "average weight"<br>
+              </div>
+              <div class="rules-font">
+                Use an "@" to directly search social media<br>
+              </div>
+              <div class="examples-font">womens march social media -> @womensmarch<br>
+              </div>
+            </div>
+          </center>
         </div>
-      </center>
+      </div>
     </div>
-  </body>
-  </html>
-
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>

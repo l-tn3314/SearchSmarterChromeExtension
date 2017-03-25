@@ -10,7 +10,6 @@
     "default_popup": "popup.html",
     "default_title": "Suggestions"
   },
-  
   "background": {
     "scripts":["eventPage.js"],
     "persistent": false

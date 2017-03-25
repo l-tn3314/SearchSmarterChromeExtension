@@ -21,6 +21,10 @@ setTimeout(function() {
   //console.log($('input[name="q"]').value);
   //console.log($('input'));
   console.log(getSearch());
+  var words = getSearch();
+  var patternId = definePattern(words);
+  var altern = definePatternSuggestions(patternId, words);
+  console.log(altern);
 }, 3000);
 
 
@@ -53,51 +57,70 @@ function definePattern(words) {
  * Returns a string with the elements in the array separated by a string
  * [1,2,3] -> "1 2 3" 
  */
-function tpSentence(words) {
+function toSentence(words) {
   var str = "";
   for (var i = 0; i < words.length; i++) {
     str = str.concat(words[i]);
+    str = str.concat(" ");
   }
   return str;
 }
-
 /*
  * Returns a String based on the given number (flag)
  */
 function definePatternSuggestions(num, words) {
   switch(num) {
   case 1:
-    const defInd = words.indexOf("define");
-    const wordsCopy = words.slice(defInd);
+    var defInd = words.indexOf("define");
+    var wordsCopy = words.slice(defInd);
+    wordsCopy.splice(0, 1);
     wordsCopy.unshift("does");
     wordsCopy.unshift("what");
     wordsCopy.push("mean");
     //wordsCopy.splice(defInd, 1);
     return toSentence(wordsCopy);
   case 2:
-    const wordsCopy = words.slice(0);
-    const ind = wordsCopy.indexOf("meaning");
+    var wordsCopy = words.slice(0);
+    var ind = wordsCopy.indexOf("meaning");
     wordsCopy.splice(ind, 1);
     wordsCopy.unshift("define");
     return toSentence(wordsCopy);
   case 3:
-    const wordsCopy = words.slice(0);
-    const whatId = wordsCopy.indexOf("what");
+    var wordsCopy = words.slice(0);
+    var whatId = wordsCopy.indexOf("what");
     wordsCopy.splice(whatInd, 2);
     wordsCopy.unshift("define");
     return toSentence(wordsCopy);
   case 4:
-    const wordsCopy = words.slice(0);
-    const whatId = wordsCopy.indexOf("what");
+    var wordsCopy = words.slice(0);
+    var whatId = wordsCopy.indexOf("what");
     wordsCopy.splice(whatId, 1);
-    const doesId = wordsCopy.indexOf("does");
+    var doesId = wordsCopy.indexOf("does");
     wordsCopy.splice(doesId, 1);
-    const meanId = wordsCopy.indexOf("mean");
+    var meanId = wordsCopy.indexOf("mean");
     wordsCopy.splice(meanId, 1);
     wordsCopy.unshift("define");
     return toSentence(wordsCopy);
   default:
     return toSentence(words);
   }
-
 }
+
+
+chrome.runtime.sendMessage({
+  action: "optimize"
+});
+
+// listen for messages from the popup
+chrome.runtime.onMessage.addListener(function (request, sender, response) {
+  if (request.action == "dom") {
+    var words = getSearch();
+    var patternId = definePattern(words);
+    var altern = definePatternSuggestions(patternId, words);
+    var domObj = {
+      suggestion: altern
+    };
+    // callback
+    response(domObj);
+  }
+});

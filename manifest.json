@@ -4,10 +4,6 @@
   "version": "1.0",
 
   "description": "No words needed",
-  "background": {
-    "scripts": ["background.js"],
-    "persistent": false
-  },
 
   "page_action": {
     "default_icon": "icon.png",
@@ -15,8 +11,20 @@
     "default_title": "Suggestions"
   },
   
+  "background": {
+    "scripts":["eventPage.js"],
+    "persistent": false
+  },
+
+  "content_scripts": [
+    {
+      "matches": ["https://www.google.com/*"], ["https://www.google.com/search?q=*"]
+      "js":["google_cs.js", "jquery-3.2.0.min.js"]
+    }
+  ],
+
   "permissions": [
-    "activeTab",
-    "declarativeContent"
+    "tabs",
+    "https://google.com/*"
   ]
 }

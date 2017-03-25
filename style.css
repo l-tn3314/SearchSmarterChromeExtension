@@ -21,3 +21,10 @@
   font-size: 12px;
   color: #646869;
 }
+
+#initialSearch {
+  font-family: "Courier New", Courier, monospace;
+  font-style: italic;
+  font-size: 18px;
+  color: #30AED9;
+}

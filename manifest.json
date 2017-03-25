@@ -18,8 +18,8 @@
 
   "content_scripts": [
     {
-      "matches": ["https://www.google.com/*"],
-      "js":["google_cs.js", "jquery-3.2.0.min.js"]
+      "matches": ["https://www.google.com/*", "https://www.google.com/search?q=*"],
+      "js": ["jquery-3.2.0.min.js", "google_cs.js", "patterns.js"]
     }
   ],
 

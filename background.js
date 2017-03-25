@@ -20,12 +20,3 @@ chrome.runtime.onInstalled.addListener(function() {
     ]);
   });
 });
-
-/*
-function doStuff() {
-  const obj = {'welp': 'please work'};
-  chrome.runtime.sendMessage(obj);
-}
-
-setInterval(doStuff, 30000);
-*/

@@ -1,0 +1,17 @@
+{
+  "manifest_version": 2,
+  "name": "Search smarter",
+  "version": "1.0",
+
+  "description": "No words needed",
+
+  "page_action": {
+    "default_icon": "icon.png",
+    "default_popup": "popup.html",
+    "default_title": "Suggestions"
+  },
+  
+  "permissions": [
+    "activeTab"
+  ]
+}

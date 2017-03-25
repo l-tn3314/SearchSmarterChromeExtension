@@ -10,8 +10,6 @@
     "default_popup": "popup.html",
     "default_title": "Suggestions"
   },
-<<<<<<< HEAD
-=======
   
   "background": {
     "scripts":["eventPage.js"],
@@ -20,14 +18,10 @@
 
   "content_scripts": [
     {
-      "matches": ["https://www.google.com/*"], ["https://www.google.com/search?q=*"]
+      "matches": ["https://www.google.com/*"],
       "js":["google_cs.js", "jquery-3.2.0.min.js"]
     }
   ],
-<<<<<<< Updated upstream
-=======
->>>>>>> origin/master
->>>>>>> Stashed changes
 
   "permissions": [
     "tabs",

@@ -13,6 +13,9 @@
       chrome.tabs.sendMessage(tabs[0].id,
             {action: "pptResult"},
             setDOM);
+      chrome.tabs.sendMessage(tabs[0].id,
+            {action: "pdfResult"},
+            setDOM);
     });
 
     $("#optResults").show();
@@ -41,6 +44,7 @@ function gLink(str) {
   $("#suggestions").hide();
   $("#eduSuggestions").hide();
   $("#pptSuggestions").hide();
+  $("#pdfSuggestions").hide();
   $("#suggestions-title").on("click", function(){
     $("#suggestions").toggle();
   });
@@ -50,7 +54,9 @@ function gLink(str) {
   $("#pptSuggestions-title").on("click", function() {
     $("#pptSuggestions").toggle();
   });
-
+  $("#pdfSuggestions-title").on("click", function() {
+    $("#pdfSuggestions").toggle();
+  });
 
 } ());
 

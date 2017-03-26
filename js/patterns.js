@@ -134,6 +134,17 @@ chrome.runtime.onMessage.addListener(function (request, sender, response) {
     // callback
     response(domObj);//, "#eduSuggestions", "#eduSuggestedLink");
   }
+  if (request.action == "pdfResult") {
+    var stringSearch = toSentence(getSearch());
+    console.log(stringSearch)
+    var domObj = {
+      suggestion: '"' + stringSearch + '"' + " filetype:pdf ",
+      divId: "pdfSuggestions",
+      newId: "pdfSuggestedLink"
+    };
+    // callback
+    response(domObj);//, "#eduSuggestions", "#eduSuggestedLink");
+  }
 });
 
 setTimeout(function() {

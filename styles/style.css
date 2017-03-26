@@ -1,34 +1,66 @@
-.header-font {
-  width: 80%;
+element {
+  --main-bg-color: #A2A2A3;
+}
+
+#header-general-font {
   font-family: "Courier New", Courier, monospace;
-  font-weight: bold;
+  font-style: italic;
   font-size: 22px;
-  color: #787878;
-  padding-top: 20px;
+  color: #88E7FC;
+  background-color: var(--main-bg-color);
+  border-width: 0px;
+  width: 100%;
+}
+
+#header-search-font {
+  font-family: "Courier New", Courier, monospace;
+  font-style: italic;
+  font-size: 22px;
+  color: #88E7FC;
+  background-color: var(--main-bg-color);
+  width: 100%;
+  border-width: 0px;
 }
 
 .rules-font {
   width: 80%;
   padding-top: 5px;
   font-family: "Courier New", Courier, monospace;
-  font-size: 17px;
-  color: #646869;
+  font-size: 18px;
+  color: #AAEBFA;
+  font-style: italic;
 }
 
 .examples-font {
   width: 80%;
   font-family: "Courier New", Courier, monospace;
-  font-size: 12px;
-  color: #646869;
+  font-size: 14px;
+  color: #C9E9F0;
 }
 
 #initialSearch {
   font-family: "Courier New", Courier, monospace;
   font-style: italic;
-  font-size: 18px;
-  color: #30AED9;
+  font-size: 20px;
+  background-color: var(--main-bg-color);
+  color: #40DCFF;
+  width: 200px;
+  border-width: 0px;
 }
 
-.hyperlink {
-  cursor: pointer;
+#suggestions {
+  width: 80%;
+  padding-top: 5px;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 18px;
+  color: #AAEBFA;
+  font-style: italic;
+}
+
+#eduSuggestions {
+  width: 80%;
+  padding-top: 5px;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 20px;
+  color: #AAEBFA;
 }

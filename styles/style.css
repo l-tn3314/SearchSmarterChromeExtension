@@ -23,7 +23,7 @@
 }
 
 /* font for the search result header */
-#header-search-font {
+.header-search-font {
   font-family: "Courier New", Courier, monospace;
   font-style: italic;
   font-size: 22px;
@@ -31,6 +31,7 @@
   background-color: var(--main-bg-color);
   width: 100%;
   border-width: 0px;
+  padding-top: 5px;
 }
 
 /* font for the general rules list */
@@ -85,6 +86,7 @@
   cursor: pointer;
 }
 
-.toggleHover:hover {
+.toggle-hover:hover {
     background-color: #ACB1F9;
+    cursor: pointer;
 }

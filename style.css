@@ -28,3 +28,7 @@
   font-size: 18px;
   color: #30AED9;
 }
+
+.hyperlink {
+  cursor: pointer;
+}

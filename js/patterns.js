@@ -59,9 +59,12 @@ function howPattern(words) {
 */
 function toSentence(words) {
   var str = "";
-  for (var i = 0; i < words.length; i++) {
+  for (var i = 0; i < words.length - 1; i++) {
     str = str.concat(words[i]);
     str = str.concat(" ");
+  }
+  if (words.length > 0) {
+    str = str.concat(words[words.length - 1]);
   }
   return str;
 }
@@ -158,6 +161,28 @@ chrome.runtime.onMessage.addListener(function (request, sender, response) {
       suggestion: "site:.edu " + stringSearch,
       divId: "eduSuggestions",
       newId: "eduSuggestedLink"
+    };
+    // callback
+    response(domObj);//, "#eduSuggestions", "#eduSuggestedLink");
+  }
+  if (request.action == "pptResult") {
+    var stringSearch = toSentence(getSearch());
+    console.log(stringSearch)
+    var domObj = {
+      suggestion: '"' + stringSearch + '"' + " filetype:ppt ",
+      divId: "pptSuggestions",
+      newId: "pptSuggestedLink"
+    };
+    // callback
+    response(domObj);//, "#eduSuggestions", "#eduSuggestedLink");
+  }
+  if (request.action == "pdfResult") {
+    var stringSearch = toSentence(getSearch());
+    console.log(stringSearch)
+    var domObj = {
+      suggestion: '"' + stringSearch + '"' + " filetype:pdf ",
+      divId: "pdfSuggestions",
+      newId: "pdfSuggestedLink"
     };
     // callback
     response(domObj);//, "#eduSuggestions", "#eduSuggestedLink");

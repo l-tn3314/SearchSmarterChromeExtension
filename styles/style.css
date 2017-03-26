@@ -64,3 +64,7 @@ element {
   font-size: 20px;
   color: #AAEBFA;
 }
+
+.hyperlink {
+  cursor: pointer;
+}

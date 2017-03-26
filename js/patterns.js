@@ -103,8 +103,8 @@ chrome.runtime.onMessage.addListener(function (request, sender, response) {
     var altern = definePatternSuggestions(patternId, words);
     var domObj = {
       suggestion: altern,
-      divId: "#suggestions",
-      newId: "#suggestedLink"
+      divId: "suggestions",
+      newId: "suggestedLink"
     };
     // callback
     response(domObj);///, "#suggestions", "#suggestedLink");
@@ -112,8 +112,8 @@ chrome.runtime.onMessage.addListener(function (request, sender, response) {
   if (request.action == "searchResult") {
     var domObj = {
       suggestion: "hi",
-      divId: "#eduSuggestions",
-      newId: "#eduSuggestedLink"
+      divId: "eduSuggestions",
+      newId: "eduSuggestedLink"
     };
     // callback
     response(domObj);//, "#eduSuggestions", "#eduSuggestedLink");

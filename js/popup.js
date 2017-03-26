@@ -1,7 +1,7 @@
 // scripts
 (function () {
   $("#optResults").hide();
-  $("#initialSearch").on("click", function(){
+  $("#initSearchButton").on("click", function(){
 
     chrome.tabs.query({ active:true, currentWindow: true}, function (tabs) {
       chrome.tabs.sendMessage(tabs[0].id,
@@ -37,8 +37,10 @@ function gLink(str) {
 (function () {
   $("#suggestions").hide();
   $("#eduSuggestions").hide();
-  $("#header-search-font").on("click", function(){
+  $("#suggestions-title").on("click", function(){
     $("#suggestions").toggle();
+  });
+  $("#eduSuggestions-title").on("click", function() {
     $("#eduSuggestions").toggle();
   });
 } ());

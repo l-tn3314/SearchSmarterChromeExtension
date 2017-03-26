@@ -13,7 +13,7 @@
     });
 
     $("#optResults").show();
-    $("#initialSearch").hide();
+    $("#initSearchButton").hide();
   });
 } ());
 

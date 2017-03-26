@@ -2,6 +2,12 @@ element {
   --main-bg-color: #A2A2A3;
 }
 
+.content {
+    padding-top: 10px;
+    padding-bottom: 10px;
+
+}
+
 #header-general-font {
   font-family: "Courier New", Courier, monospace;
   font-style: italic;
@@ -67,4 +73,8 @@ element {
 
 .hyperlink {
   cursor: pointer;
+}
+
+.toggleHover:hover {
+    background-color: #ACB1F9;
 }

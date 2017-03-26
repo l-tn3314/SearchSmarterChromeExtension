@@ -47,7 +47,11 @@ function gLink(str) {
   $("#eduSuggestions-title").on("click", function() {
     $("#eduSuggestions").toggle();
   });
-  
+  $("#pptSuggestions-title").on("click", function() {
+    $("#pptSuggestions").toggle();
+  });
+
+
 } ());
 
 

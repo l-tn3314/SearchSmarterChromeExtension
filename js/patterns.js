@@ -127,7 +127,7 @@ chrome.runtime.onMessage.addListener(function (request, sender, response) {
     var stringSearch = toSentence(getSearch());
     console.log(stringSearch)
     var domObj = {
-      suggestion: '"' + stringSearch + '"' + " filetype:.ppt ",
+      suggestion: '"' + stringSearch + '"' + " filetype:ppt ",
       divId: "pptSuggestions",
       newId: "pptSuggestedLink"
     };

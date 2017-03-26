@@ -1,4 +1,5 @@
 const SUGGESTIONS = "#suggestions";
+const EDUSUGGESTIONS = '#eduSuggestions'
 
 // scripts
 (function () {
@@ -9,6 +10,9 @@ const SUGGESTIONS = "#suggestions";
       chrome.tabs.sendMessage(tabs[0].id,
 			      {action: "dom"},
 			      setDOM);
+      chrome.tabs.sendMessage(tabs[0].id,
+            {action: "searchResult"},
+            setSearchResult);
     });
     
     console.log("sent");
@@ -30,6 +34,12 @@ function gLink(str) {
  */
 function setDOM(info) {
   console.log(info);
+  $(SUGGESTIONS).html(info.suggestion);
+}
+
+function setSearchResult(info) {
+  console.log(info);
+  $(EDUSUGGESTIONS).html(info.suggestion)
   var text = info.suggestion;
   var aElem = '<a id="suggestedLink" class="hyperlink">' + text + '</a>' 
   $(SUGGESTIONS).html(aElem);

@@ -8,6 +8,9 @@
 			      {action: "dom"},
 			      setDOM);
       chrome.tabs.sendMessage(tabs[0].id,
+      			 {action: "dom2"},
+      	     setDOM);
+      chrome.tabs.sendMessage(tabs[0].id,
 			      {action: "searchResult"},
 			      setDOM);
     });
@@ -57,8 +60,8 @@ function setDOM(info) {
   var divId = info.divId;
   var newId = info.newId;
 
-  var aElem = '<a id="' + newId + '" class="hyperlink">' + text + '</a>' 
-  $('#' + divId).html(aElem);
+  var aElem = '<a id="' + newId + '" class="hyperlink">' + text + '</a>'
+  $('#' + divId).append(aElem);
 
   var newUrl = gLink(text);
   console.log(newUrl);
@@ -68,5 +71,3 @@ function setDOM(info) {
     });
   });
 }
-	     
-		     

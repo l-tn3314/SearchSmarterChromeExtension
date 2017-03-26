@@ -1,5 +1,4 @@
 const SUGGESTIONS = "#suggestions";
-const EDUSUGGESTIONS = '#eduSuggestions'
 
 // scripts
 (function () {
@@ -10,48 +9,42 @@ const EDUSUGGESTIONS = '#eduSuggestions'
       chrome.tabs.sendMessage(tabs[0].id,
 			      {action: "dom"},
 			      setDOM);
-      chrome.tabs.sendMessage(tabs[0].id,
-            {action: "searchResult"},
-            setSearchResult);
     });
-    
-    console.log("sent");
+
     $("#optResults").show();
     $("#initialSearch").hide();
   });
 } ());
 
+(function () {
+  $("#rules-and-examples").hide();
+  $("#header-general-font").on("click", function(){
 
-/*
- * returns a google search link for the given string
- */
-function gLink(str) {
-  return "https://google.com/search?q=" + str.replace(/ /g,"+");
-}
+    chrome.tabs.query({ active:true, currentWindow: true}, function (tabs) {
+      chrome.tabs.sendMessage(tabs[0].id,
+			      {action: "dom"},
+			      setDOM);
+    });
 
-/*
- * updates the suggestion div
- */
+    $("#rules-and-examples").toggle();
+  });
+} ());
+
+(function () {
+  $("#suggestion").hide();
+  $("#header-search-font").on("click", function(){
+
+    chrome.tabs.query({ active:true, currentWindow: true}, function (tabs) {
+      chrome.tabs.sendMessage(tabs[0].id,
+			      {action: "dom"},
+			      setDOM);
+    });
+
+    $("#suggestion").toggle();
+  });
+} ());
+
+
 function setDOM(info) {
-  console.log(info);
   $(SUGGESTIONS).html(info.suggestion);
 }
-
-function setSearchResult(info) {
-  console.log(info);
-  $(EDUSUGGESTIONS).html(info.suggestion)
-  var text = info.suggestion;
-  var aElem = '<a id="suggestedLink" class="hyperlink">' + text + '</a>' 
-  $(SUGGESTIONS).html(aElem);
-
-  var newUrl = gLink(text);
-  $('#suggestedLink').on("click", function() {
-    chrome.tabs.query({currentWindow: true, active: true}, function (tab) {
-      chrome.tabs.update(tab.id, {url: newUrl});
-    });
-  });
-}
-
-
-
-

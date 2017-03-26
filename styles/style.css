@@ -1,5 +1,8 @@
-element {
-  --main-bg-color: #A2A2A3;
+/* color variables */
+.element {
+  --main-bg-color: #FFFFFF;
+  --header-text-color: #7C00CF;
+  --subtext-color: #00CF07;
 }
 
 .content {
@@ -8,67 +11,74 @@ element {
 
 }
 
+/* font for the general rules list header */
 #header-general-font {
   font-family: "Courier New", Courier, monospace;
   font-style: italic;
   font-size: 22px;
-  color: #88E7FC;
+  color: var(--header-text-color);
   background-color: var(--main-bg-color);
   border-width: 0px;
   width: 100%;
 }
 
+/* font for the search result header */
 #header-search-font {
   font-family: "Courier New", Courier, monospace;
   font-style: italic;
   font-size: 22px;
-  color: #88E7FC;
+  color: var(--header-text-color);
   background-color: var(--main-bg-color);
   width: 100%;
   border-width: 0px;
 }
 
+/* font for the general rules list */
 .rules-font {
   width: 80%;
   padding-top: 5px;
   font-family: "Courier New", Courier, monospace;
   font-size: 18px;
-  color: #AAEBFA;
+  color: var(--subtext-color);
   font-style: italic;
 }
 
+/* font for the general rules list examples */
 .examples-font {
   width: 80%;
   font-family: "Courier New", Courier, monospace;
   font-size: 14px;
-  color: #C9E9F0;
+  color: var(--subtext-color);
 }
 
+/* font for the initial button seen */
 #initialSearch {
   font-family: "Courier New", Courier, monospace;
   font-style: italic;
   font-size: 20px;
   background-color: var(--main-bg-color);
-  color: #40DCFF;
+  color: #009BCF;
   width: 200px;
   border-width: 0px;
 }
 
+/* font for the search suggestion */
 #suggestions {
   width: 80%;
   padding-top: 5px;
   font-family: "Courier New", Courier, monospace;
   font-size: 18px;
-  color: #AAEBFA;
+  color: var(--subtext-color);
   font-style: italic;
 }
 
+/* font for the edu suggestion */
 #eduSuggestions {
   width: 80%;
   padding-top: 5px;
   font-family: "Courier New", Courier, monospace;
   font-size: 20px;
-  color: #AAEBFA;
+  color: var(--subtext-color);
 }
 
 .hyperlink {

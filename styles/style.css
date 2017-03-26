@@ -1,5 +1,7 @@
 /* color variables */
 .element {
+  padding-left: 15px;
+  padding-right: 15px;
   --main-bg-color: #FFFFFF;
   --header-text-color: #7C00CF;
   --subtext-color: #00CF07;

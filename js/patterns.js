@@ -15,7 +15,6 @@ var getSearch = function() {
 }
 
 
-
 /*
  * Returns an integer for if the given String[] words fit the define pattern
  * -1 if it does not fit the pattern
@@ -30,7 +29,7 @@ function definePattern(words) {
   } else if (-1 < words.indexOf("meaning")) {
     return 2;
   } else if (-1 < words.indexOf("what") &&
-	     words.indexOf("is") == 1 + (words.indexOf("what"))) {
+	     words.indexOf("is") == 1 + words.indexOf("what")) {
     return 3;
   } else if (-1 < words.indexOf("what") &&
 	     -1 < words.indexOf("does") &&
@@ -76,7 +75,7 @@ function definePatternSuggestions(num, words) {
   case 3:
     var wordsCopy = words.slice(0);
     var whatId = wordsCopy.indexOf("what");
-    wordsCopy.splice(whatInd, 2);
+    wordsCopy.splice(whatId, 2);
     wordsCopy.unshift("define");
     return toSentence(wordsCopy);
   case 4:

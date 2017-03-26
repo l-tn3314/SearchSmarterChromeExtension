@@ -19,7 +19,14 @@
       chrome.tabs.sendMessage(tabs[0].id,
 			      {action: "pdfResult"},
 			      setDOM);
+    chrome.tabs.sendMessage(tabs[0].id,
+            {action: "askewResult"},
+            setDOM);
+    chrome.tabs.sendMessage(tabs[0].id,
+            {action: "zergRushResult"},
+            setDOM);
     });
+
     
     $("#optResults").show();
     $("#initSearchButton").hide();
@@ -46,9 +53,8 @@ function gLink(str) {
 (function () {
   $("#suggestions").hide();
   $("#eduSuggestions").hide();
-  //$("#pptSuggestions").hide();
-  //$("#pdfSuggestions").hide();
   $("#fileSuggestions").hide();
+  $("#coolSuggestions").hide();
   $("#suggestions-title").on("click", function(){
     $("#suggestions").toggle();
   });
@@ -58,14 +64,10 @@ function gLink(str) {
   $("#fileSuggestions-title").on("click", function() {
     $("#fileSuggestions").toggle();
   });  
-  /*
-  $("#pptSuggestions-title").on("click", function() {
-    $("#pptSuggestions").toggle();
+  $("#Cool-title").on("click", function() {
+    $("#coolSuggestions").toggle();
   });
-  $("#pdfSuggestions-title").on("click", function() {
-    $("#pdfSuggestions").toggle();
-  });
-  */
+
 } ());
 
 

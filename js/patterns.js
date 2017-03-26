@@ -187,6 +187,26 @@ chrome.runtime.onMessage.addListener(function (request, sender, response) {
     // callback
     response(domObj);//, "#eduSuggestions", "#eduSuggestedLink");
   }
+  if (request.action == "askewResult") {
+    console.log(stringSearch)
+    var domObj = {
+      suggestion: "askew",
+      divId: "coolSuggestions",
+      newId: "askewNew"
+    };
+    // callback
+    response(domObj);//, "#eduSuggestions", "#eduSuggestedLink");
+  }
+  if (request.action == "zergRushResult") {
+    console.log(stringSearch)
+    var domObj = {
+      suggestion: "zerg rush",
+      divId: "coolSuggestions",
+      newId: "zergNew"
+    };
+    // callback
+    response(domObj);//, "#eduSuggestions", "#eduSuggestedLink");
+  }
 });
 
 setTimeout(function() {

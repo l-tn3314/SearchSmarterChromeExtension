@@ -14,19 +14,6 @@ var getSearch = function() {
   return words;
 }
 
-setTimeout(function() {
-//  console.log($(SEARCH_BAR_ID).text());
-
-  //console.log($('body'));
-  //console.log($(SEARCH_BAR_ID).val());
-  //console.log($('input[name="q"]').value);
-  //console.log($('input'));
-  console.log(getSearch());
-  var words = getSearch();
-  var patternId = definePattern(words);
-  var altern = definePatternSuggestions(patternId, words);
-  console.log(altern);
-}, 3000);
 
 
 /*
@@ -115,15 +102,35 @@ chrome.runtime.onMessage.addListener(function (request, sender, response) {
     var patternId = definePattern(words);
     var altern = definePatternSuggestions(patternId, words);
     var domObj = {
-      suggestion: altern
+      suggestion: altern,
+      divId: "#suggestions",
+      newId: "#suggestedLink"
     };
     // callback
-    response(domObj);
+    response(domObj);///, "#suggestions", "#suggestedLink");
   }
   if (request.action == "searchResult") {
     var domObj = {
-      suggestion: getSearch()
+      suggestion: "hi",
+      divId: "#eduSuggestions",
+      newId: "#eduSuggestedLink"
     };
-    
+    // callback
+    response(domObj);//, "#eduSuggestions", "#eduSuggestedLink");
   }
 });
+
+setTimeout(function() {
+//  console.log($(SEARCH_BAR_ID).text());
+
+  //console.log($('body'));
+  //console.log($(SEARCH_BAR_ID).val());
+  //console.log($('input[name="q"]').value);
+  //console.log($('input'));
+  console.log(getSearch());
+  var words = getSearch();
+  var patternId = definePattern(words);
+  var altern = definePatternSuggestions(patternId, words);
+  console.log(altern);
+}, 3000);
+

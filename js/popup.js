@@ -1,5 +1,3 @@
-const SUGGESTIONS = "#suggestions";
-const EDUSUGGESTIONS = '#eduSuggestions'
 
 // scripts
 (function () {
@@ -12,7 +10,7 @@ const EDUSUGGESTIONS = '#eduSuggestions'
 			      setDOM);
       chrome.tabs.sendMessage(tabs[0].id,
             {action: "searchResult"},
-            setSearchResult);
+            setDOM);
     });
     
     console.log("sent");
@@ -26,6 +24,7 @@ const EDUSUGGESTIONS = '#eduSuggestions'
  * returns a google search link for the given string
  */
 function gLink(str) {
+  console.log(str)
   return "https://google.com/search?q=" + str.replace(/ /g,"+");
 }
 
@@ -34,23 +33,24 @@ function gLink(str) {
  */
 function setDOM(info) {
   console.log(info);
-  $(SUGGESTIONS).html(info.suggestion);
-}
-
-function setSearchResult(info) {
-  console.log(info);
-  $(EDUSUGGESTIONS).html(info.suggestion)
+  console.log(info.divId);
+  console.log(info.newId);
   var text = info.suggestion;
-  var aElem = '<a id="suggestedLink" class="hyperlink">' + text + '</a>' 
-  $(SUGGESTIONS).html(aElem);
+  var divId = info.divId;
+  var newId = info.newId;
+
+  var aElem = '<a id="' + newId + '" class="hyperlink">' + text + '</a>' 
+  $(divId).html(aElem);
 
   var newUrl = gLink(text);
-  $('#suggestedLink').on("click", function() {
+  console.log(newUrl);
+  $(newId).on("click", function() {
     chrome.tabs.query({currentWindow: true, active: true}, function (tab) {
       chrome.tabs.update(tab.id, {url: newUrl});
     });
   });
 }
+
 
 
 

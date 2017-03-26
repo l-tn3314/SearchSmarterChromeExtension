@@ -1,4 +1,5 @@
 const SUGGESTIONS = "#suggestions";
+const EDUSUGGESTIONS = '#eduSuggestions'
 
 // scripts
 (function () {
@@ -9,6 +10,9 @@ const SUGGESTIONS = "#suggestions";
       chrome.tabs.sendMessage(tabs[0].id,
 			      {action: "dom"},
 			      setDOM);
+      chrome.tabs.sendMessage(tabs[0].id,
+            {action: "searchResult"},
+            setSearchResult);
     });
     
     console.log("sent");
@@ -21,5 +25,11 @@ const SUGGESTIONS = "#suggestions";
 function setDOM(info) {
   console.log(info);
   $(SUGGESTIONS).html(info.suggestion);
+  $(EDUSUGGESTIONS).html(info.)
+}
+
+function setSearchResult(info) {
+  console.log(info);
+  $(EDUSUGGESTIONS).html(info.suggestion)
 }
 

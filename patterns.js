@@ -13,6 +13,7 @@ var getSearch = function() {
   const words = sentence.split(" ");
   return words;
 }
+
 setTimeout(function() {
 //  console.log($(SEARCH_BAR_ID).text());
 
@@ -118,5 +119,11 @@ chrome.runtime.onMessage.addListener(function (request, sender, response) {
     };
     // callback
     response(domObj);
+  }
+  if (request.action == "searchResult") {
+    var domObj = {
+      suggestion: getSearch()
+    };
+    
   }
 });

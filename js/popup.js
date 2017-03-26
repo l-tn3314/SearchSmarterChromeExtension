@@ -10,6 +10,9 @@
       chrome.tabs.sendMessage(tabs[0].id,
 			      {action: "searchResult"},
 			      setDOM);
+      chrome.tabs.sendMessage(tabs[0].id,
+            {action: "pptResult"},
+            setDOM);
     });
 
     $("#optResults").show();
@@ -37,12 +40,14 @@ function gLink(str) {
 (function () {
   $("#suggestions").hide();
   $("#eduSuggestions").hide();
+  $("#pptSuggestions").hide();
   $("#suggestions-title").on("click", function(){
     $("#suggestions").toggle();
   });
   $("#eduSuggestions-title").on("click", function() {
     $("#eduSuggestions").toggle();
   });
+  
 } ());
 
 

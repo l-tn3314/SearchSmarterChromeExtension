@@ -9,18 +9,18 @@
 			      setDOM);
       chrome.tabs.sendMessage(tabs[0].id,
       			 {action: "dom2"},
-      	     setDOM);
+      			      setDOM);
       chrome.tabs.sendMessage(tabs[0].id,
 			      {action: "searchResult"},
 			      setDOM);
       chrome.tabs.sendMessage(tabs[0].id,
-            {action: "pptResult"},
-            setDOM);
+			      {action: "pptResult"},
+			      setDOM);
       chrome.tabs.sendMessage(tabs[0].id,
-            {action: "pdfResult"},
-            setDOM);
+			      {action: "pdfResult"},
+			      setDOM);
     });
-
+    
     $("#optResults").show();
     $("#initSearchButton").hide();
   });
@@ -46,21 +46,26 @@ function gLink(str) {
 (function () {
   $("#suggestions").hide();
   $("#eduSuggestions").hide();
-  $("#pptSuggestions").hide();
-  $("#pdfSuggestions").hide();
+  //$("#pptSuggestions").hide();
+  //$("#pdfSuggestions").hide();
+  $("#fileSuggestions").hide();
   $("#suggestions-title").on("click", function(){
     $("#suggestions").toggle();
   });
   $("#eduSuggestions-title").on("click", function() {
     $("#eduSuggestions").toggle();
   });
+  $("#fileSuggestions-title").on("click", function() {
+    $("#fileSuggestions").toggle();
+  });  
+  /*
   $("#pptSuggestions-title").on("click", function() {
     $("#pptSuggestions").toggle();
   });
   $("#pdfSuggestions-title").on("click", function() {
     $("#pdfSuggestions").toggle();
   });
-
+  */
 } ());
 
 

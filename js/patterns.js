@@ -170,8 +170,8 @@ chrome.runtime.onMessage.addListener(function (request, sender, response) {
     console.log(stringSearch)
     var domObj = {
       suggestion: '"' + stringSearch + '"' + " filetype:ppt ",
-      divId: "pptSuggestions",
-      newId: "pptSuggestedLink"
+      divId: "fileSuggestions",
+      newId: "fileSuggestedLink"
     };
     // callback
     response(domObj);//, "#eduSuggestions", "#eduSuggestedLink");
@@ -181,8 +181,8 @@ chrome.runtime.onMessage.addListener(function (request, sender, response) {
     console.log(stringSearch)
     var domObj = {
       suggestion: '"' + stringSearch + '"' + " filetype:pdf ",
-      divId: "pdfSuggestions",
-      newId: "pdfSuggestedLink"
+      divId: "fileSuggestions",
+      newId: "fileSuggestedLink2"
     };
     // callback
     response(domObj);//, "#eduSuggestions", "#eduSuggestedLink");

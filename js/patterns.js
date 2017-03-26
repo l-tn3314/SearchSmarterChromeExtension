@@ -96,6 +96,7 @@ function definePatternSuggestions(num, words) {
 
 // listen for messages from the popup
 chrome.runtime.onMessage.addListener(function (request, sender, response) {
+  
   if (request.action == "dom") {
     var words = getSearch();
     var patternId = definePattern(words);
@@ -109,8 +110,10 @@ chrome.runtime.onMessage.addListener(function (request, sender, response) {
     response(domObj);///, "#suggestions", "#suggestedLink");
   }
   if (request.action == "searchResult") {
+    var stringSearch = toSentence(getSearch())
+    console.log(stringSearch)
     var domObj = {
-      suggestion: "hi",
+      suggestion: "site:.edu " + stringSearch,
       divId: "eduSuggestions",
       newId: "eduSuggestedLink"
     };

@@ -1,12 +1,12 @@
-element {
-  --main-bg-color: #A2A2A3;
+.element {
+  --main-bg-color: #FFFFFF;
 }
 
 #header-general-font {
   font-family: "Courier New", Courier, monospace;
   font-style: italic;
   font-size: 22px;
-  color: #88E7FC;
+  color: #7C00CF;
   background-color: var(--main-bg-color);
   border-width: 0px;
   width: 100%;
@@ -16,7 +16,7 @@ element {
   font-family: "Courier New", Courier, monospace;
   font-style: italic;
   font-size: 22px;
-  color: #88E7FC;
+  color: #7C00CF;
   background-color: var(--main-bg-color);
   width: 100%;
   border-width: 0px;
@@ -27,7 +27,7 @@ element {
   padding-top: 5px;
   font-family: "Courier New", Courier, monospace;
   font-size: 18px;
-  color: #AAEBFA;
+  color: #00CF07;
   font-style: italic;
 }
 
@@ -35,7 +35,7 @@ element {
   width: 80%;
   font-family: "Courier New", Courier, monospace;
   font-size: 14px;
-  color: #C9E9F0;
+  color: #00CF07;
 }
 
 #initialSearch {
@@ -43,7 +43,7 @@ element {
   font-style: italic;
   font-size: 20px;
   background-color: var(--main-bg-color);
-  color: #40DCFF;
+  color: #009BCF;
   width: 200px;
   border-width: 0px;
 }
@@ -53,7 +53,7 @@ element {
   padding-top: 5px;
   font-family: "Courier New", Courier, monospace;
   font-size: 18px;
-  color: #AAEBFA;
+  color: #00CF07;
   font-style: italic;
 }
 
@@ -62,7 +62,7 @@ element {
   padding-top: 5px;
   font-family: "Courier New", Courier, monospace;
   font-size: 20px;
-  color: #AAEBFA;
+  color: #00CF07;
 }
 
 .hyperlink {

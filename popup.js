@@ -22,14 +22,36 @@ const EDUSUGGESTIONS = '#eduSuggestions'
 } ());
 
 
+/*
+ * returns a google search link for the given string
+ */
+function gLink(str) {
+  return "https://google.com/search?q=" + str.replace(/ /g,"+");
+}
+
+/*
+ * updates the suggestion div
+ */
 function setDOM(info) {
   console.log(info);
   $(SUGGESTIONS).html(info.suggestion);
-  $(EDUSUGGESTIONS).html(info.)
 }
 
 function setSearchResult(info) {
   console.log(info);
   $(EDUSUGGESTIONS).html(info.suggestion)
+  var text = info.suggestion;
+  var aElem = '<a id="suggestedLink" class="hyperlink">' + text + '</a>' 
+  $(SUGGESTIONS).html(aElem);
+
+  var newUrl = gLink(text);
+  $('#suggestedLink').on("click", function() {
+    chrome.tabs.query({currentWindow: true, active: true}, function (tab) {
+      chrome.tabs.update(tab.id, {url: newUrl});
+    });
+  });
 }
+
+
+
 

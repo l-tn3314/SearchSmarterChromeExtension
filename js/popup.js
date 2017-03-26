@@ -61,7 +61,7 @@ function setDOM(info) {
   var newId = info.newId;
 
   var aElem = '<a id="' + newId + '" class="hyperlink">' + text + '</a>'
-  $('#' + divId).append(aElem);
+  $('#' + divId).append(aElem + "</br>");
 
   var newUrl = gLink(text);
   console.log(newUrl);

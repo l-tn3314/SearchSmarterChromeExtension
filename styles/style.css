@@ -35,7 +35,7 @@ element {
   width: 80%;
   font-family: "Courier New", Courier, monospace;
   font-size: 14px;
-  color: #AAEBFA;
+  color: #C9E9F0;
 }
 
 #initialSearch {
@@ -46,4 +46,21 @@ element {
   color: #40DCFF;
   width: 200px;
   border-width: 0px;
+}
+
+#suggestions {
+  width: 80%;
+  padding-top: 5px;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 18px;
+  color: #AAEBFA;
+  font-style: italic;
+}
+
+#eduSuggestions {
+  width: 80%;
+  padding-top: 5px;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 20px;
+  color: #AAEBFA;
 }

@@ -31,7 +31,8 @@ const SUGGESTIONS = "#suggestions";
 } ());
 
 (function () {
-  $("#suggestion").hide();
+  $("#suggestions").hide();
+  $("#eduSuggestions").hide();
   $("#header-search-font").on("click", function(){
 
     chrome.tabs.query({ active:true, currentWindow: true}, function (tabs) {
@@ -40,7 +41,8 @@ const SUGGESTIONS = "#suggestions";
 			      setDOM);
     });
 
-    $("#suggestion").toggle();
+    $("#suggestions").toggle();
+    $("#eduSuggestions").toggle();
   });
 } ());
 

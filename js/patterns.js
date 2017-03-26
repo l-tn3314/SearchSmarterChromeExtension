@@ -102,7 +102,7 @@ function definePatternSuggestions(num, words) {
     wordsCopy.unshift("define");
     return toSentence(wordsCopy);
   default:
-    return toSentence(words);
+    return "";//toSentence(words);
   }
 }
 

@@ -7,19 +7,19 @@
 
   "page_action": {
     "icon": "iconRed.png",
-    "default_icon": "iconRed.png",
+    "default_icon": "img/iconRed.png",
     "default_popup": "popup.html",
     "default_title": "Suggestions"
   },
   "background": {
-    "scripts":["eventPage.js"],
+    "scripts":["js/eventPage.js"],
     "persistent": false
   },
 
   "content_scripts": [
     {
       "matches": ["https://www.google.com/*", "https://www.google.com/search*", "https://www.google.com/#q*, https://www.google.com/webhp*"],
-      "js": ["jquery-3.2.0.min.js", "google_cs.js", "patterns.js"]
+      "js": ["lib/jquery-3.2.0.min.js", "js/google_cs.js", "js/patterns.js"]
     }
   ],
 

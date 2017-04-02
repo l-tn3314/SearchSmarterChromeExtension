@@ -3,12 +3,12 @@
 const SEARCH_BAR_ID = "#lst-ib";
 
 /*
- * Returns a String[] of the words in the search (in the inputted order)
- */
+* Returns a String[] of the words in the search (in the inputted order)
+*/
 var getSearch = function() {
   var sentence = $(SEARCH_BAR_ID).val();
   if (sentence == null) {
-    sentence = " " 
+    sentence = " "
   }
   const words = sentence.split(" ");
   return words;
@@ -16,48 +16,64 @@ var getSearch = function() {
 
 
 /*
- * Returns an integer for if the given String[] words fit the define pattern
- * -1 if it does not fit the pattern
- * 1 if it contains the word "define"
- * 2 if it contains the word "meaning" 
- * 3 if it contains the words "what", "is" successively
- * 4 if it contains the words "what", "does", "mean"
- */
+* Returns an integer for if the given String[] words fit the define pattern
+* -1 if it does not fit the pattern
+* 1 if it contains the word "define"
+* 2 if it contains the word "meaning"
+* 3 if it contains the words "what", "is" successively
+* 4 if it contains the words "what", "does", "mean"
+*/
 function definePattern(words) {
   if (-1 < words.indexOf("define")) {
     return 1;
   } else if (-1 < words.indexOf("meaning")) {
     return 2;
   } else if (-1 < words.indexOf("what") &&
-	     words.indexOf("is") == 1 + words.indexOf("what")) {
+  words.indexOf("is") == 1 + words.indexOf("what")) {
     return 3;
   } else if (-1 < words.indexOf("what") &&
-	     -1 < words.indexOf("does") &&
-	     -1 < words.indexOf("mean")) {
+  -1 < words.indexOf("does") &&
+  -1 < words.indexOf("mean")) {
     return 4;
+  } else {
+    return -1;
+  }
+}
+/*
+* Returns an integer for if the given String[] words fit the how to pattern
+* -1 if it does not fit the pattern
+* 1 if it contains the words "how to"
+*/
+function howPattern(words) {
+  if (-1 < words.indexOf("how") &&
+  -1 < words.indexOf("to")) {
+    return 1;
   } else {
     return -1;
   }
 }
 
 /*
- * Returns a string with the elements in the array separated by a string
- * [1,2,3] -> "1 2 3" 
- */
+* Returns a string with the elements in the array separated by a string
+* [1,2,3] -> "1 2 3"
+*/
 function toSentence(words) {
   var str = "";
-  for (var i = 0; i < words.length; i++) {
+  for (var i = 0; i < words.length - 1; i++) {
     str = str.concat(words[i]);
     str = str.concat(" ");
+  }
+  if (words.length > 0) {
+    str = str.concat(words[words.length - 1]);
   }
   return str;
 }
 /*
- * Returns a String based on the given number (flag)
- */
+* Returns a String based on the given number (flag)
+*/
 function definePatternSuggestions(num, words) {
   switch(num) {
-  case 1:
+    case 1:
     var defInd = words.indexOf("define");
     var wordsCopy = words.slice(defInd);
     wordsCopy.splice(0, 1);
@@ -66,19 +82,19 @@ function definePatternSuggestions(num, words) {
     wordsCopy.push("mean");
     //wordsCopy.splice(defInd, 1);
     return toSentence(wordsCopy);
-  case 2:
+    case 2:
     var wordsCopy = words.slice(0);
     var ind = wordsCopy.indexOf("meaning");
     wordsCopy.splice(ind, 1);
     wordsCopy.unshift("define");
     return toSentence(wordsCopy);
-  case 3:
+    case 3:
     var wordsCopy = words.slice(0);
     var whatId = wordsCopy.indexOf("what");
     wordsCopy.splice(whatId, 2);
     wordsCopy.unshift("define");
     return toSentence(wordsCopy);
-  case 4:
+    case 4:
     var wordsCopy = words.slice(0);
     var whatId = wordsCopy.indexOf("what");
     wordsCopy.splice(whatId, 1);
@@ -88,15 +104,30 @@ function definePatternSuggestions(num, words) {
     wordsCopy.splice(meanId, 1);
     wordsCopy.unshift("define");
     return toSentence(wordsCopy);
-  default:
+    default:
     return "";//toSentence(words);
   }
 }
-
+/*
+* Returns a String based on the given number (flag)
+*/
+function howPatternSuggestions(num, words) {
+  switch(num) {
+    case 1:
+    var wordsCopy = words.slice(0);
+    var howInd = words.indexOf("how");
+    wordsCopy.splice(howInd, 2);
+    return toSentence(wordsCopy);
+    default:
+    words.unshift("to");
+    words.unshift("how");
+    return toSentence(words);
+  }
+}
 
 // listen for messages from the popup
 chrome.runtime.onMessage.addListener(function (request, sender, response) {
-  
+
   if (request.action == "dom") {
     var words = getSearch();
     var patternId = definePattern(words);
@@ -109,6 +140,20 @@ chrome.runtime.onMessage.addListener(function (request, sender, response) {
     // callback
     response(domObj);///, "#suggestions", "#suggestedLink");
   }
+
+  if (request.action == "dom2") {
+    var words = getSearch();
+    var patternId2 = howPattern(words);
+    var altern2 = howPatternSuggestions(patternId2, words);
+    var domObj2 = {
+      suggestion: altern2,
+      divId: "suggestions",
+      newId: "suggestedLink2"
+    };
+    // callback
+    response(domObj2);///, "#suggestions", "#suggestedLink");
+
+  }
   if (request.action == "searchResult") {
     var stringSearch = toSentence(getSearch())
     console.log(stringSearch)
@@ -120,10 +165,32 @@ chrome.runtime.onMessage.addListener(function (request, sender, response) {
     // callback
     response(domObj);//, "#eduSuggestions", "#eduSuggestedLink");
   }
+  if (request.action == "pptResult") {
+    var stringSearch = toSentence(getSearch());
+    console.log(stringSearch)
+    var domObj = {
+      suggestion: '"' + stringSearch + '"' + " filetype:ppt ",
+      divId: "fileSuggestions",
+      newId: "fileSuggestedLink"
+    };
+    // callback
+    response(domObj);//, "#eduSuggestions", "#eduSuggestedLink");
+  }
+  if (request.action == "pdfResult") {
+    var stringSearch = toSentence(getSearch());
+    console.log(stringSearch)
+    var domObj = {
+      suggestion: '"' + stringSearch + '"' + " filetype:pdf ",
+      divId: "fileSuggestions",
+      newId: "fileSuggestedLink2"
+    };
+    // callback
+    response(domObj);//, "#eduSuggestions", "#eduSuggestedLink");
+  }
 });
 
 setTimeout(function() {
-//  console.log($(SEARCH_BAR_ID).text());
+  //  console.log($(SEARCH_BAR_ID).text());
 
   //console.log($('body'));
   //console.log($(SEARCH_BAR_ID).val());
@@ -132,7 +199,8 @@ setTimeout(function() {
   console.log(getSearch());
   var words = getSearch();
   var patternId = definePattern(words);
+  var patternId2 = howPattern(words);
   var altern = definePatternSuggestions(patternId, words);
+  var altern = howPatternSuggestions(patternId2, words);
   console.log(altern);
 }, 3000);
-

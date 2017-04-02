@@ -8,10 +8,19 @@
 			      {action: "dom"},
 			      setDOM);
       chrome.tabs.sendMessage(tabs[0].id,
+      			 {action: "dom2"},
+      			      setDOM);
+      chrome.tabs.sendMessage(tabs[0].id,
 			      {action: "searchResult"},
 			      setDOM);
+      chrome.tabs.sendMessage(tabs[0].id,
+			      {action: "pptResult"},
+			      setDOM);
+      chrome.tabs.sendMessage(tabs[0].id,
+			      {action: "pdfResult"},
+			      setDOM);
     });
-
+    
     $("#optResults").show();
     $("#initSearchButton").hide();
   });
@@ -37,12 +46,26 @@ function gLink(str) {
 (function () {
   $("#suggestions").hide();
   $("#eduSuggestions").hide();
+  //$("#pptSuggestions").hide();
+  //$("#pdfSuggestions").hide();
+  $("#fileSuggestions").hide();
   $("#suggestions-title").on("click", function(){
     $("#suggestions").toggle();
   });
   $("#eduSuggestions-title").on("click", function() {
     $("#eduSuggestions").toggle();
   });
+  $("#fileSuggestions-title").on("click", function() {
+    $("#fileSuggestions").toggle();
+  });  
+  /*
+  $("#pptSuggestions-title").on("click", function() {
+    $("#pptSuggestions").toggle();
+  });
+  $("#pdfSuggestions-title").on("click", function() {
+    $("#pdfSuggestions").toggle();
+  });
+  */
 } ());
 
 
@@ -57,8 +80,8 @@ function setDOM(info) {
   var divId = info.divId;
   var newId = info.newId;
 
-  var aElem = '<a id="' + newId + '" class="hyperlink">' + text + '</a>' 
-  $('#' + divId).html(aElem);
+  var aElem = '<a id="' + newId + '" class="hyperlink">' + text + '</a>'
+  $('#' + divId).append(aElem + "</br>");
 
   var newUrl = gLink(text);
   console.log(newUrl);
@@ -68,5 +91,3 @@ function setDOM(info) {
     });
   });
 }
-	     
-		     

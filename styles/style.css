@@ -1,5 +1,7 @@
 /* color variables */
 .element {
+  padding-left: 15px;
+  padding-right: 15px;
   --main-bg-color: #FFFFFF;
   --header-text-color: #7C00CF;
   --subtext-color: #00CF07;
@@ -31,7 +33,6 @@
   background-color: var(--main-bg-color);
   width: 100%;
   border-width: 0px;
-  padding-top: 5px;
 }
 
 /* font for the general rules list */
@@ -73,8 +74,8 @@
   font-style: italic;
 }
 
-/* font for the edu suggestion */
-#eduSuggestions {
+/* font for the links */
+.link-font {
   width: 80%;
   padding-top: 5px;
   font-family: "Courier New", Courier, monospace;
